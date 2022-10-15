@@ -1,0 +1,30 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.protobuf'
+}
+
+android {
+   compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.android.systemui"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode 100000
+        versionName "1.0.0"
+    }
+
+    sourceSets {
+        main{
+            res.srcDirs = ['res','res-keyguard','res-product']
+            java.srcDirs = ['src']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+}
+
+dependencies {
+    compileOnly files(rootProject.ext.dependencies.framework)
+}

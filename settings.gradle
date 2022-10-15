@@ -1,0 +1,53 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+    }
+}
+
+rootProject.name = "SystemUI"
+include ':systemui'
+project(':systemui').projectDir = new File(rootDir, 'systemui')
+
+include ':animation'
+project(':animation').projectDir = new File(rootDir, 'systemui/animation')
+
+include ':monet'
+project(':monet').projectDir = new File(rootDir, 'systemui/monet')
+
+include ':plugin_core'
+project(':plugin_core').projectDir = new File(rootDir, 'systemui/plugin_core')
+
+include ':shared'
+project(':shared').projectDir = new File(rootDir, 'systemui/shared')
+
+include ':plugin'
+project(':plugin').projectDir = new File(rootDir, 'systemui/plugin')
+
+// 依赖的其他模块
+include ':Windowmanager-Shell'
+project(':Windowmanager-Shell').projectDir = new File(rootDir, 'Windowmanager-Shell')
+
+include ':iconloaderlib'
+project(':iconloaderlib').projectDir = new File(rootDir, 'iconloaderlib')
+
+// 依赖的AAR包
+include ':shared_aars'
+
+
+

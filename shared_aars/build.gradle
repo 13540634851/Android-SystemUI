@@ -1,0 +1,4 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file(rootProject.ext.aars.androidx_dynamicanimation_dynamicanimation))
+artifacts.add("default", file(rootProject.ext.aars.androidx_core_core_ktx))
+artifacts.add("default", file(rootProject.ext.aars.androidx_core_core))

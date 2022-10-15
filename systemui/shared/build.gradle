@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.android.minSdkVersion
+        targetSdk rootProject.ext.android.targetSdkVersion
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src']
+            java.srcDirs = ['src']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':plugin_core')
+    implementation project(':shared_aars')
+    implementation project(':Windowmanager-Shell')
+
+    implementation files(rootProject.ext.libs.androidx_concurrent_concurrent_futures)
+    implementation files(rootProject.ext.libs.androidx_annotation_annotation)
+    implementation files(rootProject.ext.libs.com_google_guava)
+    implementation files(rootProject.ext.libs.androidx_lifecycle)
+
+    compileOnly files(rootProject.ext.dependencies.framework)
+}

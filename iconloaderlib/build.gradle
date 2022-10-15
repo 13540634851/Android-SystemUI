@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+}
+android {
+    compileSdk rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.android.minSdkVersion
+        targetSdk rootProject.ext.android.targetSdkVersion
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src', 'src_full_lib']
+            manifest.srcFile 'AndroidManifest.xml'
+            res.srcDirs = ['res']
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compileOnly files(rootProject.ext.aars.androidx_core_core)
+    compileOnly files(rootProject.ext.libs.androidx_annotation_annotation)
+}
